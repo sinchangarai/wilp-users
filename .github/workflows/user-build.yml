@@ -1,0 +1,26 @@
+name: User microservice CI/CD
+on:
+  workflow_dispatch:
+    inputs:
+      test-input:
+        description: "Test input"
+        default: ""
+        required: false
+
+jobs:
+    user_microservice_prep:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout source code
+              uses: actions/checkout@v3
+
+            - name: Set up JDK 17
+              uses: actions/setup-java@v3
+              with:
+                distribution: 'temurin'
+                java-version: '17'
+                cache: 'gradle'
+
+            - name: Build jar file with gradle wrapper
+              run: ./gradlew build -x test
+
