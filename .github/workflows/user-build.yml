@@ -39,8 +39,8 @@ jobs:
                 password: ${{ secrets.DOCKERHUB_TOKEN }}
 
             - name: Build and push
-              uses: docker/build-push-action@v5
-              with:
-                push: true
-                tags: sinchangarai/user-image:ci
+              run: |
+                docker build -t user-image:ci .
+                docker tag user-image:ci sinchangarai/user-image:ci
+                docker push sinchangarai/user-image:ci
 
