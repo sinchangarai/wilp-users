@@ -22,7 +22,9 @@ jobs:
                 cache: 'gradle'
 
             - name: Build jar file with gradle wrapper
-              run: ./gradlew build -x test
+              run: |
+                ./gradlew build -x test
+                tee
 
             - name: Set up QEMU
               uses: docker/setup-qemu-action@v3
