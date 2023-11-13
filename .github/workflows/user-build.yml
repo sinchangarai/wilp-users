@@ -1,11 +1,8 @@
 name: User microservice CI/CD
 on:
-  workflow_dispatch:
-    inputs:
-      test-input:
-        description: "Test input"
-        default: ""
-        required: false
+    push:
+      branches:
+        - "**"
 
 jobs:
     user_microservice_prep:
